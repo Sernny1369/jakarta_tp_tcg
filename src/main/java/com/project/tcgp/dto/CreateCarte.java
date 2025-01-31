@@ -8,13 +8,21 @@ public class CreateCarte {
 
 	private RareCarte rare;
 
-	private Pokemon pokemon;
+	private String pokemonId;
 
-	public RareCarte getRare() {
-		return rare;
-	}
+    public RareCarte getRare() {
+        return rare;
+    }
 
-	public Pokemon getPokemon() {
-        return pokemon;
+    public void setRare(RareCarte rare) {
+        this.rare = rare;
+    }
+
+    public String getPokemonId() {
+        return pokemonId;
+    }
+
+    public void setPokemonId(String pokemonId) {
+        this.pokemonId = pokemonId;
     }
 }

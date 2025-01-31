@@ -18,9 +18,11 @@ import java.util.List;
 public class CarteServiceImpl implements ICarteService {
 
 	private final CarteRepository repository;
+	private final PokemonRepository pokemonRepository;
 
-	public CarteServiceImpl(CarteRepository repository) {
+	public CarteServiceImpl(CarteRepository repository, PokemonRepository pokemonRepository) {
 		this.repository = repository;
+		this.pokemonRepository = pokemonRepository;
 	}
 
 	@Override
@@ -35,7 +37,10 @@ public class CarteServiceImpl implements ICarteService {
 	public void create(CreateCarte createCarte) {
 		Carte carteACreer = new Carte();
 		carteACreer.setRare(createCarte.getRare());
-		carteACreer.setPokemon(createCarte.getPokemon());
+
+		Pokemon pokemon = pokemonRepository.findById(createCarte.getPokemonId()).orElse(null);
+        carteACreer.setPokemon(pokemon);
+
 		repository.save(carteACreer);
 	}
 
