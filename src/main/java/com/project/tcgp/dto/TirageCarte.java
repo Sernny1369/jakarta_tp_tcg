@@ -1,19 +1,10 @@
-package com.project.tcgp.models;
+package com.project.tcgp.dto;
 
 import com.project.tcgp.constants.RareCarte;
-import jakarta.persistence.*;
 
-@Entity
-public class Carte {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class TirageCarte {
     private String uuid;
-
-    @ManyToOne
-    @JoinColumn(name = "pokemon_id")
-    private Pokemon pokemon;
-
-    @Enumerated(EnumType.STRING)
+    private String nomPokemon;
     private RareCarte rare;
 
     // Getters and setters
@@ -25,12 +16,12 @@ public class Carte {
         this.uuid = uuid;
     }
 
-    public Pokemon getPokemon() {
-        return pokemon;
+    public String getNomPokemon() {
+        return nomPokemon;
     }
 
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
+    public void setNomPokemon(String nomPokemon) {
+        this.nomPokemon = nomPokemon;
     }
 
     public RareCarte getRare() {
