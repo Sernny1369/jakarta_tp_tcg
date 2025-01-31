@@ -2,6 +2,8 @@ package com.project.tcgp.models;
 
 import com.project.tcgp.constants.TypePokemon;
 import java.util.List;
+import java.util.Random;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,10 +15,13 @@ public class Pokemon {
 
 	private String nom;
 
-	private Integer niveau;
+	private Integer pv;
 
 	@Enumerated(EnumType.STRING)
 	private TypePokemon type;
+
+	private Integer atk1;
+	private Integer atk2;
 
 	public String getNom() {
 		return nom;
@@ -26,12 +31,12 @@ public class Pokemon {
 		this.nom = nom;
 	}
 
-	public Integer getNiveau() {
-		return niveau;
+	public Integer getPv() {
+		return pv;
 	}
 
-	public void setNiveau(Integer niveau) {
-		this.niveau = niveau;
+	public void setPv(Integer pv) {
+		this.pv = pv;
 	}
 
 	public TypePokemon getType() {
@@ -41,9 +46,31 @@ public class Pokemon {
 	public void setType(TypePokemon type) {
 		this.type = type;
 	}
+	
+	public Integer getAtk1() {
+		return atk1;
+	}
+
+	public void setAtk1(Integer atk1) {
+		this.atk1 = atk1;
+	}
+	public Integer getAtk2() {
+		return atk2;
+	}
+
+	public void setAtk2(Integer atk2) {
+		this.atk2 = atk2;
+	}
 
 
 	public String getUuid() {
 		return uuid;
 	}
+
+	public void initializeStats() {
+		Random random = new Random();
+		this.atk1 = (random.nextInt(12) + 1) * 10; 
+		this.atk2 = (random.nextInt(12) + 1) * 10; 
+		this.pv = (random.nextInt(9) + 5) * 10; 
+    }
 }
