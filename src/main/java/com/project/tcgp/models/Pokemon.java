@@ -1,6 +1,7 @@
 package com.project.tcgp.models;
 
 import com.project.tcgp.constants.TypePokemon;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -40,6 +41,7 @@ public class Pokemon {
 	public void setType(TypePokemon type) {
 		this.type = type;
 	}
+
 
 	public String getUuid() {
 		return uuid;
